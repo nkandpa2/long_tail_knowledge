@@ -3,7 +3,7 @@
 This repo contains the code and data used for the analysis in [Large Language Models Struggle to Learn Long-Tail Knowledge](https://arxiv.org/abs/2211.08411)
 
 ## Pre-training Dataset Entities
-As part of this project, we ran the [DBPedia Spotlight](https://www.dbpedia-spotlight.org) entity linker on large-scale LM pre-training datasets such as The Pile, C4, ROOTS, OpenWebText, and Wikipedia. The entity linking data is hosted on [HuggingFace Hub](https://huggingface.co/datasets/nkandpa2/pretraining_entities). To get this data, you can either download it from their web UI, with the instructions from [here](https://huggingface.co/docs/huggingface_hub/how-to-downstream), or using git to clone the repo from HuggingFace.
+As part of this project, we ran the [DBPedia Spotlight](https://www.dbpedia-spotlight.org) entity linker on large-scale LM pre-training datasets such as The Pile, C4, ROOTS, OpenWebText, and Wikipedia. The entity linking data is hosted on [HuggingFace Hub](https://huggingface.co/datasets/nkandpa2/pretraining_entities). To get this data, you can either download it from their web UI, download it from Python with the instructions from [here](https://huggingface.co/docs/huggingface_hub/how-to-downstream), or run `git clone https://huggingface.co/datasets/nkandpa2/pretraining_entities` to clone the HuggingFace repo (note that this requires git lfs to be installed to actually download the data).
 
 ### Format
 There are five files:
