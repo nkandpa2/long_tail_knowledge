@@ -25,6 +25,8 @@ There are four files:
 - `trivia_qa_unfiltered.nocontext_train_entities.jsonl`
 - `trivia_qa_unfiltered.nocontext_validation_entities.jsonl`
 
+The Natural Questions files are in the order of [nq_open](https://huggingface.co/datasets/nq_open) dataset and the Trivia QA files are in the order of the `unfiltered.nocontext` split of the [trivia_qa](https://huggingface.co/datasets/trivia_qa) dataset.
+
 These are each jsonlines files. Each line in the file is a dictionary with the following structure:
 ```
 {   
