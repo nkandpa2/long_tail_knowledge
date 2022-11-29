@@ -13,12 +13,12 @@ from huggingface_hub import HfApi
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('outdir', help='output directory')
-    parser.add_argument('--dataset', default='openwebtext', choices=['openwebtext','the_pile','roots','wikipedia'], help='dataset to entity link')
+    parser.add_argument('--dataset', default='openwebtext', choices=['openwebtext','the_pile','roots','wikipedia','c4'], help='dataset to entity link')
     parser.add_argument('--wikipedia_path', default=None, help='path to wikipedia HFDataset if --dataset wikipedia')
     parser.add_argument('--nprocs', default=4, type=int, help='number of processes')
     parser.add_argument('--start', default=0, type=int, help='start index')
     parser.add_argument('--end', default=-1, type=int, help='end index')
-    parser.add_argument('--spotlight_port', nargs='+', type=int, default=[2222], help='port serving DBPedia Spotlight')
+    parser.add_argument('--spotlight_ports', nargs='+', type=int, default=[2222], help='ports serving DBPedia Spotlight')
     parser.add_argument('--confidence', default=0.4, type=float, help='DBPedia confidence parameter')
     parser.add_argument('--support', default=20, type=int, help='DBPedia support parameter')
     parser.add_argument('--auth_token', default=None, type=str, help='Huggingface auth token')
@@ -37,7 +37,7 @@ def annotate(text, port, confidence, support, retry=5):
         return [{'URI':'__HTTP_ERROR__'}]
 
 def link_fn(example, rank):
-    annotations = annotate(example['text'], args.spotlight_port[rank % len(args.spotlight_port)], args.confidence, args.support)
+    annotations = annotate(example['text'], args.spotlight_ports[rank % len(args.spotlight_ports)], args.confidence, args.support)
     entity_uris = set([a['URI'] for a in annotations])
     example['entities'] = list(entity_uris)
     return example

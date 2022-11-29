@@ -10,9 +10,9 @@ from link_pretraining_data import load_dataset
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('outdir', help='output directory')
-    parser.add_argument('--dataset', default='openwebtext', choices=['openwebtext','the_pile','roots','wikipedia'], help='dataset to entity link')
+    parser.add_argument('--dataset', default='openwebtext', choices=['openwebtext','the_pile','roots','wikipedia','c4'], help='dataset to entity link')
     parser.add_argument('--wikipedia_path', default=None, help='path to wikipedia HFDataset if --dataset wikipedia')
-    parser.add_argument('--spotlight_port', nargs='+', type=int, default=[2222], help='ports serving DBPedia Spotlight')
+    parser.add_argument('--spotlight_ports', nargs='+', type=int, default=[2222], help='ports serving DBPedia Spotlight')
     parser.add_argument('--confidence', default=0.4, type=float, help='DBPedia confidence parameter')
     parser.add_argument('--support', default=20, type=int, help='DBPedia support parameter')
     parser.add_argument('--auth_token', default=None, type=str, help='Huggingface auth token')
@@ -38,12 +38,12 @@ def main(args):
         dataset_arg = f'--dataset {args.dataset}' 
         wikipedia_arg = f'--wikipedia_path {args.wikipedia_path}' if args.wikipedia_path else ''
         nprocs_arg = f'--nprocs {args.nprocs}'
-        spotlight_port_arg = f'--spotlight_port {" ".join([str(p) for p in args.spotlight_port])}'
+        spotlight_ports_arg = f'--spotlight_ports {" ".join([str(p) for p in args.spotlight_ports])}'
         confidence_arg = f'--confidence {args.confidence}'
         support_arg = f'--support {args.support}'
         auth_token_arg = f'--auth_token {args.auth_token}'
         
-        command f'python link_pretraining_data.py {args.outdir} {dataset_arg} {wikipedia_arg} {nprocs_arg} {spotlight_port_arg} {confidence_arg} {support_arg} {auth_token_arg} --start {start} --end {end}'
+        command f'python link_pretraining_data.py {args.outdir} {dataset_arg} {wikipedia_arg} {nprocs_arg} {spotlight_ports_arg} {confidence_arg} {support_arg} {auth_token_arg} --start {start} --end {end}'
         print(f'Processing records {start} to {end}')
         print(command)
         ret = subprocess.Popen(shlex.split(command), stdout=sys.stdout, stderr=sys.stderr).wait()

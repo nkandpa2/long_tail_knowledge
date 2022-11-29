@@ -1,0 +1,165 @@
+version: '3.5'    
+services:
+  spotlight.en1:
+    image: dbpedia/dbpedia-spotlight
+    container_name: dbpedia-spotlight.en1
+    volumes:
+       - spotlight-model:/opt/spotlight/models
+    restart: unless-stopped   
+    ports:
+       - "0.0.0.0:2221:80"  
+    command: /bin/spotlight.sh en
+
+  spotlight.en2:
+    image: dbpedia/dbpedia-spotlight
+    container_name: dbpedia-spotlight.en2
+    volumes:
+       - spotlight-model:/opt/spotlight/models
+    restart: unless-stopped   
+    ports:
+       - "0.0.0.0:2222:80"  
+    command: /bin/spotlight.sh en
+
+  spotlight.en3:
+    image: dbpedia/dbpedia-spotlight
+    container_name: dbpedia-spotlight.en3
+    volumes:
+       - spotlight-model:/opt/spotlight/models
+    restart: unless-stopped   
+    ports:
+       - "0.0.0.0:2223:80"  
+    command: /bin/spotlight.sh en
+ 
+  spotlight.en4:
+    image: dbpedia/dbpedia-spotlight
+    container_name: dbpedia-spotlight.en4
+    volumes:
+       - spotlight-model:/opt/spotlight/models
+    restart: unless-stopped   
+    ports:
+       - "0.0.0.0:2224:80"  
+    command: /bin/spotlight.sh en
+
+  spotlight.en5:
+    image: dbpedia/dbpedia-spotlight
+    container_name: dbpedia-spotlight.en5
+    volumes:
+       - spotlight-model:/opt/spotlight/models
+    restart: unless-stopped   
+    ports:
+       - "0.0.0.0:2225:80"  
+    command: /bin/spotlight.sh en
+
+  spotlight.en6:
+    image: dbpedia/dbpedia-spotlight
+    container_name: dbpedia-spotlight.en6
+    volumes:
+       - spotlight-model:/opt/spotlight/models
+    restart: unless-stopped   
+    ports:
+       - "0.0.0.0:2226:80"  
+    command: /bin/spotlight.sh en
+
+  spotlight.en7:
+    image: dbpedia/dbpedia-spotlight
+    container_name: dbpedia-spotlight.en7
+    volumes:
+       - spotlight-model:/opt/spotlight/models
+    restart: unless-stopped   
+    ports:
+       - "0.0.0.0:2227:80"  
+    command: /bin/spotlight.sh en
+
+  spotlight.en8:
+    image: dbpedia/dbpedia-spotlight
+    container_name: dbpedia-spotlight.en8
+    volumes:
+       - spotlight-model:/opt/spotlight/models
+    restart: unless-stopped   
+    ports:
+       - "0.0.0.0:2228:80"  
+    command: /bin/spotlight.sh en
+
+  spotlight.en9:
+    image: dbpedia/dbpedia-spotlight
+    container_name: dbpedia-spotlight.en9
+    volumes:
+       - spotlight-model:/opt/spotlight/models
+    restart: unless-stopped   
+    ports:
+       - "0.0.0.0:2229:80"  
+    command: /bin/spotlight.sh en
+
+  spotlight.en10:
+    image: dbpedia/dbpedia-spotlight
+    container_name: dbpedia-spotlight.en10
+    volumes:
+       - spotlight-model:/opt/spotlight/models
+    restart: unless-stopped   
+    ports:
+       - "0.0.0.0:2230:80"  
+    command: /bin/spotlight.sh en
+
+  spotlight.en11:
+    image: dbpedia/dbpedia-spotlight
+    container_name: dbpedia-spotlight.en11
+    volumes:
+       - spotlight-model:/opt/spotlight/models
+    restart: unless-stopped   
+    ports:
+       - "0.0.0.0:2231:80"  
+    command: /bin/spotlight.sh en
+
+  spotlight.en12:
+    image: dbpedia/dbpedia-spotlight
+    container_name: dbpedia-spotlight.en12
+    volumes:
+       - spotlight-model:/opt/spotlight/models
+    restart: unless-stopped   
+    ports:
+       - "0.0.0.0:2232:80"  
+    command: /bin/spotlight.sh en
+
+  spotlight.en13:
+    image: dbpedia/dbpedia-spotlight
+    container_name: dbpedia-spotlight.en13
+    volumes:
+       - spotlight-model:/opt/spotlight/models
+    restart: unless-stopped   
+    ports:
+       - "0.0.0.0:2233:80"  
+    command: /bin/spotlight.sh en
+
+  spotlight.en14:
+    image: dbpedia/dbpedia-spotlight
+    container_name: dbpedia-spotlight.en14
+    volumes:
+       - spotlight-model:/opt/spotlight/models
+    restart: unless-stopped   
+    ports:
+       - "0.0.0.0:2234:80"  
+    command: /bin/spotlight.sh en
+
+  spotlight.en15:
+    image: dbpedia/dbpedia-spotlight
+    container_name: dbpedia-spotlight.en15
+    volumes:
+       - spotlight-model:/opt/spotlight/models
+    restart: unless-stopped   
+    ports:
+       - "0.0.0.0:2235:80"  
+    command: /bin/spotlight.sh en
+
+  spotlight.en16:
+    image: dbpedia/dbpedia-spotlight
+    container_name: dbpedia-spotlight.en16
+    volumes:
+       - spotlight-model:/opt/spotlight/models
+    restart: unless-stopped   
+    ports:
+       - "0.0.0.0:2236:80"  
+    command: /bin/spotlight.sh en
+ 
+volumes:
+  spotlight-model:
+    external: true
