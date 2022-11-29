@@ -58,7 +58,7 @@ To run DBPedia Spotlight on Trivia QA or Natural Questions use the following com
 Trivia QA:
 ```
 python link_qa.py [output_directory] \ 
-                  --dataset trivia_qa
+                  --dataset trivia_qa \
                   --dataset_subset [subset to entity link (e.g., unfiltered, rc, etc.)] \
                   --dataset_splits [list of splits to entity link (e.g., train, validation, etc.)] \
                   --nprocs [number of processes]
