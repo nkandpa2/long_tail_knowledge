@@ -9,6 +9,7 @@ import os
 import requests
 import random
 from tqdm.auto import tqdm
+import pdb
 
 def parse_args():
     parser = argparse.ArgumentParser()
@@ -57,7 +58,7 @@ def load_dataset(args):
         dataset = datasets.load_dataset(args.dataset)
     elif args.dataset == 'trivia_qa':
         dataset = datasets.load_dataset(args.dataset, args.dataset_subset)
-    
+        dataset = dataset.map(lambda e: {'answer': e['answer']['aliases']})
     dataset = datasets.concatenate_datasets([dataset[s] for s in args.dataset_splits])
     return dataset
 
