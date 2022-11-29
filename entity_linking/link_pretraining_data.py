@@ -2,7 +2,6 @@ import spotlight
 import datasets
 import numpy as np
 import argparse
-import pickle
 import os
 import requests
 from tqdm.auto import tqdm
@@ -80,10 +79,11 @@ def main(args):
     
     for k,v in entity_map.items():
         entity_map[k] = np.array(list(v), dtype=np.int32)
-
-    filename = f'{args.dataset}_{args.start}_{args.end}_entity_map.pkl' if args.end != -1 else f'{args.dataset}_entity_map.pkl'
-    with open(os.path.join(args.outdir, filename), 'wb') as f:
-        pickle.dump(dict(entity_map), f)
+    
+    filename = f'{args.dataset}_{args.start}_{args.end}_entity_map.npz' if args.end != -1 else f'{args.dataset}_entity_map.npz'
+    output_file = os.path.join(args.outdir, filename)
+    print(f'Saving entities to {output_file}')
+    np.savez_compressed(output_file, **entity_map)
 
 if __name__ == '__main__':
     args = parse_args()
