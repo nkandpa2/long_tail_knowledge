@@ -53,4 +53,27 @@ python link_pretraining_data_chunked.py [output directory] \
 Note: To run the script on ROOTS, you will need access to the dataset through BigScience and must specify your HuggingFace auth token with `--auth_token [token]`.
 
 ## Question Answering Datasets
-TODO
+To run DBPedia Spotlight on Trivia QA or Natural Questions use the following commands:
+
+Trivia QA:
+```
+python link_qa.py [output_directory] \ 
+                  --dataset trivia_qa
+                  --dataset_subset [subset to entity link (e.g., unfiltered, rc, etc.)] \
+                  --dataset_splits [list of splits to entity link (e.g., train, validation, etc.)] \
+                  --nprocs [number of processes]
+                  --spotlight_ports [list of ports]
+                  --confidence 0.4
+                  --support 20
+```
+
+Natural Questions:
+```
+python link_qa.py [output_directory] \
+                  --dataset nq_open \
+                  --dataset_splits [list of splits to entity link (e.g., train, validation, etc.)] \
+                  --nprocs [number of processes]
+                  --spotlight_ports [list of ports]
+                  --confidence 0.4
+                  --support 20
+```
