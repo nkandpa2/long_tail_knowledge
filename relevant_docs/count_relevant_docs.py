@@ -16,6 +16,7 @@ def parse_args():
     parser.add_argument('--qa_split', default='validation', help='split of qa dataset used')
     parser.add_argument('--type', default='qa_co_occurrence', choices=['qa_co_occurrence','q_occurrence','a_occurrence'], help='type of entity occurrence/co-occurrence to count')
     parser.add_argument('--save_examples', default=False, action='store_true', help='save examples where each relevant fact occurs')
+    parser.add_argument('--exclude_countries', default=False, action='store_true', help='ignore countries in the list of question entities')
 
     args = parser.parse_args()
     return args
@@ -67,7 +68,9 @@ def main(args):
     with open(args.qa_entities, 'r') as f:
         with jsonlines.Reader(f) as reader:
             for i, qa_example in enumerate(tqdm(reader)):
-                q_entities = set([q['URI'] for q in qa_example['q_entities']])# - countries
+                q_entities = set([q['URI'] for q in qa_example['q_entities']])
+                if args.exclude_countries:
+                    q_entities -= countries
                 a_entity_list = [a['URI'] for a in qa_example['a_entities'] if not a['URI'] in q_entities]
                 a_entities = set(a_entity_list)
                 a_entity_counts = {a:a_entity_list.count(a) for a in a_entities}
