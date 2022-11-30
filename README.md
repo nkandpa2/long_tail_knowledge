@@ -35,7 +35,7 @@ These are each jsonlines files. Each line in the file is a dictionary with the f
 }
 ```
 The entities in the `q_entities` and `a_entities` lists are also dictionaries with the structure:
-```
+```json
 {
     'URI': <dbpedia entity URI>,
     'support': <dbpedia support>,
