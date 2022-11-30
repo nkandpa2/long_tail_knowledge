@@ -47,4 +47,5 @@ The entities in the `q_entities` and `a_entities` lists are also dictionaries wi
 }
 ```
 ## Code
-The code for running the entity linker can be found in `entity_linking/`.
+- The code and instructions for running the entity linker can be found in `entity_linking/`
+- The code and instructions for running the relevant document counting heuristic can be found in `relevant_docs`
