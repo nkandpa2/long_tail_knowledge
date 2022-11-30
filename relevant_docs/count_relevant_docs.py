@@ -3,17 +3,15 @@ import pickle
 import jsonlines
 from tqdm.auto import tqdm
 import argparse
-import functools
 import os
 import utils
-import pdb
 
 from country_entities import countries
 
 def parse_args():
     parser = argparse.ArgumentParser(formatter_class=argparse.RawTextHelpFormatter)
     parser.add_argument('qa_entities', help='path to QA entities file (jsonl)')
-    parser.add_argument('training_entities', help='path to training entities file (json or pkl)')
+    parser.add_argument('training_entities', help='path to training entities file (npz)')
     parser.add_argument('output_dir', help='path to output directory')
     parser.add_argument('--qa_split', default='validation', help='split of qa dataset used')
     parser.add_argument('--type', default='qa_co_occurrence', choices=['qa_co_occurrence','q_occurrence','a_occurrence'], help='type of entity occurrence/co-occurrence to count')
@@ -57,12 +55,7 @@ def count_co_occurrences(training_entities, q_entities, a_entities, common_a_ent
 
 def main(args):
     print('Loading training entities')
-    if args.training_entities.endswith('json'):
-        with open(args.training_entities, 'r') as f:
-            training_entities = json.load(f)
-    elif args.training_entities.endswith('pkl'):
-        with open(args.training_entities, 'rb') as f:
-            training_entities = pickle.load(f)
+    training_entities = np.load(args.training_entities)
     
     print('Sorting training entity lists')
     training_entities = utils.sort_entity_map(training_entities)
