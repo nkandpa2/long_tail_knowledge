@@ -24,3 +24,5 @@ python count_relevant_docs.py <path to qa entities .jsonl file> \
                               --qa_split <qa dataset split used to generate entities> \
                               --type <q_occurrence | a_occurrence>
 ```
+
+We also find that countries present in the questions in QA datasets tend to be the most commonly found in pre-training datasets. However, these are rarely the most salient entities for answering the question. For instance, the most common entity in "What US born founder started the company Amazon?" would be "United States". If you wish to ignore these entities when running the relevant document counting heuristic, you can specify the argument `--exclude_countries`.
