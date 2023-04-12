@@ -5,6 +5,7 @@ from tqdm.auto import tqdm
 import pdb
 
 def sort_entity_map(entity_map):
+    entity_map = dict(entity_map)
     for e in tqdm(entity_map.keys()):
         entity_map[e] = np.sort(np.unique(entity_map[e]))
     return entity_map
