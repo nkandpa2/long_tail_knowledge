@@ -67,8 +67,8 @@ def main(args):
     with open(os.path.join(args.outdir, out_filename), 'w') as outfile:
         with jsonlines.Writer(outfile) as writer:
             with mp.Pool(args.nprocs) as pool:
-                link_itr = pool.imap(link_fn, nq)
-                for link in tqdm(link_itr, total=len(nq)):
+                link_itr = pool.imap(link_fn, qa)
+                for link in tqdm(link_itr, total=len(qa)):
                     writer.write(link)
 
 
